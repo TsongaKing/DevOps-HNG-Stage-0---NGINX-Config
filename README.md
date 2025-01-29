@@ -50,7 +50,8 @@ Networking and Firewall Configuration: The task deepened my knowledge of network
 
 Screenshot of Deployed NGINX Server
 Here is a screenshot of the deployed NGINX server displaying my custom HTML page:
-https://drive.google.com/file/d/1Svt2dWJlkGFKvN0e5iwwjpNpgOJbt8RC/view?usp=drive_link
+![NGINX Server Screenshot](https://drive.google.com/uc?export=view&id=1Svt2dWJlkGFKvN0e5iwwjpNpgOJbt8RC)
+
 
 
 Conclusion
