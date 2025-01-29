@@ -13,7 +13,7 @@ After successfully installing NGINX, I ensured that the service was up and runni
 
 The next step was to personalize the default page to display a custom message. I edited the index.html file in the /var/www/html/ directory, replacing the default content with a message that read:
 
-"Welcome to DevOps Stage 0 - [Your Name]/[SlackName]"
+"Welcome to DevOps Stage 0 - Phangasasa Muhlaba/HexHaven"
 
 This task allowed me to familiarize myself with basic NGINX configurations, specifically serving static HTML files. I gained a deeper understanding of the role of NGINX in web services, which is foundational to DevOps and cloud security.
 
@@ -50,7 +50,7 @@ Networking and Firewall Configuration: The task deepened my knowledge of network
 
 Screenshot of Deployed NGINX Server
 Here is a screenshot of the deployed NGINX server displaying my custom HTML page:
-C:\Users\phang\Videos\Captures
+https://drive.google.com/file/d/1Svt2dWJlkGFKvN0e5iwwjpNpgOJbt8RC/view?usp=drive_link
 
 
 Conclusion
