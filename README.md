@@ -54,6 +54,7 @@ Here is a screenshot of the deployed NGINX server displaying my custom HTML page
 
 
 
+
 Conclusion
 Successfully completing this task was not just about configuring a web server, but also about understanding the bigger picture of how DevOps practices, web services, and security are interrelated. It provided me with real-world insights into managing and troubleshooting web servers, tasks I will certainly encounter throughout my career.
 
