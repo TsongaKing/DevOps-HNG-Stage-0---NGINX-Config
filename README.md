@@ -50,7 +50,8 @@ Networking and Firewall Configuration: The task deepened my knowledge of network
 
 Screenshot of Deployed NGINX Server
 Here is a screenshot of the deployed NGINX server displaying my custom HTML page:
-<iframe src="https://drive.google.com/file/d/1Svt2dWJlkGFKvN0e5iwwjpNpgOJbt8RC/preview" width="640" height="480" allow="autoplay"></iframe>
+![Welcome to DevOps Stage 0 - KingTsonga - Microsoft​ Edge 2025_01_30 13_08_38](https://github.com/user-attachments/assets/176d9617-9c89-4253-95bf-ebd1b84dc210)
+
 
 
 
