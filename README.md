@@ -75,8 +75,6 @@ My NGINX server is now successfully running and accessible at [**http://192.168.
 
 Here’s a screenshot of the deployed NGINX web page:
 
-![NGINX Server Screenshot](https://drive.google.com/uc?export=view&id=1Svt2dWJlkGFKvN0e5iwwjpNpgOJbt8RC)
-
 ![Welcome to DevOps Stage 0 - KingTsonga - Microsoft​ Edge 2025_01_30 13_08_38](https://github.com/user-attachments/assets/176d9617-9c89-4253-95bf-ebd1b84dc210)
 
 ## Learning and Professional Growth
