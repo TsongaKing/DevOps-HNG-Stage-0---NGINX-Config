@@ -1,8 +1,10 @@
 Deploying a Static Web Page with NGINX on an Azure Virtual Machine
+
 Introduction
 As part of the HNG DevOps Stage 0 project, I deployed a simple static webpage using NGINX on an Azure Virtual Machine (VM). This task involved installing and configuring NGINX, serving a custom HTML page, and ensuring accessibility through a public IP. This blog post documents my approach, challenges faced, and key takeaways from the experience.
 
 Approach to Completing the Task
+
 1. Setting Up the Virtual Machine
 Since I am focusing on Azure for my cloud security journey, I decided to use an Azure Virtual Machine for this project. I launched a Linux-based VM (Ubuntu 20.04) and configured its network settings to allow HTTP traffic on port 80.
 
@@ -20,13 +22,15 @@ bash
 Copy
 Edit
 sudo systemctl status nginx
-If not running, I started it with:
+If it wasn’t running, I started it with:
 
 bash
 Copy
 Edit
 sudo systemctl start nginx
+
 3. Creating a Custom HTML Page
+
 To customize the default NGINX page, I created an index.html file inside the web root directory (/var/www/html/):
 
 bash
@@ -55,32 +59,46 @@ Edit
     <p>If you see this page, the NGINX web server is successfully installed and working. Further configuration is required.</p>
 </body>
 </html>
+
 After saving the file, I restarted NGINX:
 
 bash
 Copy
 Edit
 sudo systemctl restart nginx
+
 4. Accessing the Web Page
+
 With NGINX running, I accessed my webpage by entering the public IP address of my VM into a browser:
 
 arduino
 Copy
 Edit
-http://<your-server-ip>/ 
+http://<your-server-ip>/
+
 If the page did not load initially, I ensured that:
 
 The firewall allowed traffic on port 80 (sudo ufw allow 'Nginx HTTP')
 The NGINX service was active and error-free (sudo systemctl status nginx)
+
 5. Screenshot of the Deployed Web Page
 To visually confirm the successful deployment of the static webpage, here's a screenshot of the page accessed through the public IP of my Azure Virtual Machine:
 
+![Welcome to DevOps Stage 0 - Google Chrome 2025_02_01 13_08_00](https://github.com/user-attachments/assets/b566752f-1e98-471e-bbdc-87ce551a5733)
 
-Challenges Faced and Solutions
-Firewall Blocking HTTP Requests: Initially, I couldn’t access my page via the browser. I resolved this by updating Azure’s Network Security Group (NSG) to allow inbound HTTP traffic on port 80.
-NGINX Not Serving the New Page: After updating index.html, the old page persisted. Clearing the browser cache and restarting NGINX solved this issue.
-Permission Issues: At one point, I encountered permission errors while modifying /var/www/html/. Using sudo resolved this.
-Learning Outcomes and Professional Growth
+6. Challenges Faced and Solutions
+
+Firewall Blocking HTTP Requests:
+Initially, I couldn’t access my page via the browser. I resolved this by updating Azure’s Network Security Group (NSG) to allow inbound HTTP traffic on port 80.
+
+NGINX Not Serving the New Page: 
+After updating index.html, the old page persisted. Clearing the browser cache and restarting NGINX solved this issue.
+
+Permission Issues: 
+At one point, I encountered permission errors while modifying /var/www/html/. Using sudo resolved this.
+
+7. Learning Outcomes and Professional Growth
+
 This task provided hands-on experience in:
 
 Deploying web services using NGINX
