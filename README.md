@@ -20,7 +20,7 @@ bash
 Copy
 Edit
 sudo systemctl status nginx
-If it wasn’t running, I started it with:
+If not running, I started it with:
 
 bash
 Copy
@@ -67,7 +67,7 @@ With NGINX running, I accessed my webpage by entering the public IP address of m
 arduino
 Copy
 Edit
-http://<your-server-ip>/
+http://<your-server-ip>/ 
 If the page did not load initially, I ensured that:
 
 The firewall allowed traffic on port 80 (sudo ufw allow 'Nginx HTTP')
@@ -75,7 +75,6 @@ The NGINX service was active and error-free (sudo systemctl status nginx)
 5. Screenshot of the Deployed Web Page
 To visually confirm the successful deployment of the static webpage, here's a screenshot of the page accessed through the public IP of my Azure Virtual Machine:
 
-![Welcome to DevOps Stage 0 - Google Chrome 2025_02_01 13_08_00](https://github.com/user-attachments/assets/1068c865-4551-47dc-bff1-4ba3f1a2c0cd)
 
 Challenges Faced and Solutions
 Firewall Blocking HTTP Requests: Initially, I couldn’t access my page via the browser. I resolved this by updating Azure’s Network Security Group (NSG) to allow inbound HTTP traffic on port 80.
