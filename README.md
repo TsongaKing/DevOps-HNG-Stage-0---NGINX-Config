@@ -1,96 +1,97 @@
-# My Experience with DevOps Stage 0 - NGINX Configuration
+Deploying a Static Web Page with NGINX on an Azure Virtual Machine
+Introduction
+As part of the HNG DevOps Stage 0 project, I deployed a simple static webpage using NGINX on an Azure Virtual Machine (VM). This task involved installing and configuring NGINX, serving a custom HTML page, and ensuring accessibility through a public IP. This blog post documents my approach, challenges faced, and key takeaways from the experience.
 
-## Introduction
+Approach to Completing the Task
+1. Setting Up the Virtual Machine
+Since I am focusing on Azure for my cloud security journey, I decided to use an Azure Virtual Machine for this project. I launched a Linux-based VM (Ubuntu 20.04) and configured its network settings to allow HTTP traffic on port 80.
 
-As part of the DevOps Stage 0 task, I was required to set up and configure NGINX on a fresh Ubuntu server. This experience helped me gain hands-on skills in web server setup, configuration, and deployment.
+2. Installing NGINX
+Once the VM was up and running, I accessed it via SSH and installed NGINX using the following commands:
 
-## Approach to Completing the Task
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install nginx -y
+After installation, I verified that NGINX was running using:
 
-To complete this task, I followed these steps:
+bash
+Copy
+Edit
+sudo systemctl status nginx
+If not running, I started it with:
 
-1. **Provisioned an Ubuntu Server** – I used a virtual machine to create a fresh Ubuntu environment.
-2. **Installed NGINX** – I ran the following command to install NGINX:
-   ```bash
-   sudo apt update && sudo apt install nginx -y
-   ```
-3. **Started and Enabled NGINX** – I ensured that the web server was running with:
-   ```bash
-   sudo systemctl start nginx
-   sudo systemctl enable nginx
-   ```
-4. **Created a Custom HTML Page** – I modified the default web page at `/var/www/html/index.html` with the required message:
-   ```html
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <title>Welcome to DevOps Stage 0</title>
-       <style>
-           html { color-scheme: light dark; }
-           body { width: 35em; margin: 0 auto;
-                  font-family: Tahoma, Verdana, Arial, sans-serif;
-                  text-align: center; }
-           h1 { color: #007BFF; }
-       </style>
-   </head>
-   <body>
-       <h1>Welcome to DevOps Stage 0 - Phangasasa Muhlaba / HexHaven</h1>
-       <p>If you see this page, the NGINX web server is successfully installed and working. Further configuration is required.</p>
-       <p>For online documentation and support, please refer to <a href="http://nginx.org/">nginx.org</a>.<br/>
-       Commercial support is available at <a href="http://nginx.com/">nginx.com</a>.</p>
-       <p><em>Thank you for using NGINX.</em></p>
-   </body>
-   </html>
-   ```
-5. **Configured NGINX to Listen on Port 80** – Initially, it was running on port 8080. I modified the configuration file (`/etc/nginx/sites-available/default`) to ensure it listens on port 80:
-   ```nginx
-   server {
-       listen 80 default_server;
-       listen [::]:80 default_server;
-       root /var/www/html;
-       index index.html;
-       server_name _;
+bash
+Copy
+Edit
+sudo systemctl start nginx
+3. Creating a Custom HTML Page
+To customize the default NGINX page, I created an index.html file inside the web root directory (/var/www/html/):
 
-       location / {
-           try_files $uri $uri/ =404;
-       }
-   }
-   ```
-   After making changes, I restarted NGINX:
-   ```bash
-   sudo systemctl restart nginx
-   ```
+bash
+Copy
+Edit
+echo "Welcome to DevOps Stage 0 - Phangasasa Muhlaba / HexHaven" | sudo tee /var/www/html/index.html
+For a more styled page, I replaced the content with a custom HTML file:
 
-## Challenges and Solutions
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to DevOps Stage 0</title>
+    <style>
+        html { color-scheme: light dark; }
+        body { width: 35em; margin: 0 auto;
+               font-family: Tahoma, Verdana, Arial, sans-serif;
+               text-align: center; }
+        h1 { color: #007BFF; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to DevOps Stage 0 - Phangasasa Muhlaba / HexHaven</h1>
+    <p>If you see this page, the NGINX web server is successfully installed and working. Further configuration is required.</p>
+</body>
+</html>
+After saving the file, I restarted NGINX:
 
-- **Port Issue (Running on 8080 Instead of 80)**: Initially, NGINX was configured to listen on port 8080. To fix this, I modified the configuration file and restarted the service.
-- **Firewall Blocking Requests**: I had to allow HTTP traffic using:
-  ```bash
-  sudo ufw allow 'Nginx Full'
-  ```
-- **Accessing the Server from a Different Network**: Since I was using a local IP (`192.168.x.x`), I ensured port forwarding was configured properly for external access.
+bash
+Copy
+Edit
+sudo systemctl restart nginx
+4. Accessing the Web Page
+With NGINX running, I accessed my webpage by entering the public IP address of my VM into a browser:
 
-## Final Results
+arduino
+Copy
+Edit
+http://<your-server-ip>/ 
+If the page did not load initially, I ensured that:
 
-My NGINX server is now successfully running and accessible at [**http://192.168.114.104/**](http://192.168.114.104/).
+The firewall allowed traffic on port 80 (sudo ufw allow 'Nginx HTTP')
+The NGINX service was active and error-free (sudo systemctl status nginx)
+5. Screenshot of the Deployed Web Page
+To visually confirm the successful deployment of the static webpage, here's a screenshot of the page accessed through the public IP of my Azure Virtual Machine:
 
-Here’s a screenshot of the deployed NGINX web page:
 
-![Welcome to DevOps Stage 0 - KingTsonga - Microsoft​ Edge 2025_01_30 13_08_38](https://github.com/user-attachments/assets/176d9617-9c89-4253-95bf-ebd1b84dc210)
+Challenges Faced and Solutions
+Firewall Blocking HTTP Requests: Initially, I couldn’t access my page via the browser. I resolved this by updating Azure’s Network Security Group (NSG) to allow inbound HTTP traffic on port 80.
+NGINX Not Serving the New Page: After updating index.html, the old page persisted. Clearing the browser cache and restarting NGINX solved this issue.
+Permission Issues: At one point, I encountered permission errors while modifying /var/www/html/. Using sudo resolved this.
+Learning Outcomes and Professional Growth
+This task provided hands-on experience in:
 
-## Learning and Professional Growth
+Deploying web services using NGINX
+Managing cloud-based Azure Virtual Machines
+Debugging network and server issues
+These skills align with my goal of becoming a Cloud Security Engineer and strengthen my foundation for roles such as Azure DevOps Engineer or Site Reliability Engineer.
 
-This task deepened my understanding of:
+Conclusion
+This project reinforced my understanding of web server deployment and cloud infrastructure. Overcoming real-world challenges improved my troubleshooting skills and deepened my appreciation for DevOps practices. I look forward to more advanced projects integrating CI/CD and security best practices into cloud deployments.
 
-- Web server installation and configuration.
-- Firewall and networking configurations.
-- Practical DevOps skills for setting up infrastructure.
+📌 References:
 
-## References
-
-I referenced the following links for guidance:
-
-- [Azure DevOps Engineers](https://hng.tech/hire/azure-devops-engineers)
-- [Cloud Engineers](https://hng.tech/hire/cloud-engineers)
-
-This project was a great hands-on experience, reinforcing key DevOps concepts that align with my professional goals in Cloud Security and DevSecOps.
-
+Azure DevOps Engineers
+Site Reliability Engineers
